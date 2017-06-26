@@ -42,8 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int height = size.y;
         Toast.makeText(MainActivity.this, "Width = " + width + "Height = " + height, Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-        startActivity(intent);
+
 
     }
 
@@ -109,6 +108,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d("Calculation", "Result = " + sum);
                 Toast.makeText(MainActivity.this, "Result" + sum, Toast.LENGTH_SHORT).show();
 
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("Result", sum);
+                startActivity(intent);
             }
         });
         viewGroup1 = (CustomViewGroup) findViewById(R.id.ViewGroup1);
