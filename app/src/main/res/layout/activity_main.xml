@@ -148,12 +148,16 @@
             <com.example.kamonwan.exampleone.CustomViewGroup
                 android:id="@+id/ViewGroup1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></com.example.kamonwan.exampleone.CustomViewGroup>
+                android:layout_height="wrap_content">
+
+            </com.example.kamonwan.exampleone.CustomViewGroup>
 
             <com.example.kamonwan.exampleone.CustomViewGroup
                 android:id="@+id/ViewGroup2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></com.example.kamonwan.exampleone.CustomViewGroup>
+                android:layout_height="wrap_content">
+
+            </com.example.kamonwan.exampleone.CustomViewGroup>
 
             <com.example.kamonwan.exampleone.CustomView
                 android:layout_width="match_parent"
