@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView tvHello, tvResults;
     EditText editTextHello, editText1, editText2;
     Button btnCoppy, btnCalculate;
-    CustomViewGroup viewGroup1,viewGroup2;
+    CustomViewGroup viewGroup1, viewGroup2;
 
     private RadioGroup rgOperator;
 
@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int width = size.x;
         int height = size.y;
         Toast.makeText(MainActivity.this, "Width = " + width + "Height = " + height, Toast.LENGTH_SHORT).show();
-
 
 
     }
@@ -110,6 +109,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 intent.putExtra("Result", sum);
+
+                // Playground
+                Coordinate c1 = new Coordinate();
+                c1.x = 5;
+                c1.y = 10;
+                c1.z = 20;
+                Bundle bundle = new Bundle();
+                bundle.putInt("x", c1.x);
+                bundle.putInt("y", c1.y);
+                bundle.putInt("z", c1.z);
+                intent.putExtra("cBundle", bundle);
+
+                //Serializable Lab
+                CoordinateSerializable c2 = new CoordinateSerializable();
+                c2.x = 5;
+                c2.y = 10;
+                c2.z = 20;
+                intent.putExtra("cSerializable", c2);
+
+                CoordinateParcelable c3 = new CoordinateParcelable();
+                c3.x = 5;
+                c3.y = 10;
+                c3.z = 20;
+                intent.putExtra("cParcelable", c3);
                 startActivity(intent);
             }
         });
