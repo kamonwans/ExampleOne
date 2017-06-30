@@ -84,7 +84,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:text="0" />
+                    android:text="0"
+                    android:freezesText="true"/>
             </LinearLayout>
 
             <Button
@@ -95,6 +96,7 @@
                 android:textColor="@color/colorButton" />
 
             <CheckBox
+                android:id="@+id/cbAgree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
@@ -160,10 +162,12 @@
             </com.example.kamonwan.exampleone.CustomViewGroup>
 
             <com.example.kamonwan.exampleone.CustomView
+                android:id="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="160dp" />
 
             <com.example.kamonwan.exampleone.CustomView
+                android:id="@+id/view1"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 app:isBlue="true" />

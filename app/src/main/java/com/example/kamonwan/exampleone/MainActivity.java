@@ -1,7 +1,9 @@
 package com.example.kamonwan.exampleone;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Point;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +23,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    int x,y,z; //Save/Restore in Activity instance state
     TextView tvHello, tvResults;
     EditText editTextHello, editText1, editText2;
     Button btnCoppy, btnCalculate;
@@ -31,6 +34,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (getResources().getBoolean(R.bool.portrait_only)) {
+            //Fix
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        }
         setContentView(R.layout.activity_main);
 
         initstances();
@@ -41,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int width = size.x;
         int height = size.y;
         Toast.makeText(MainActivity.this, "Width = " + width + "Height = " + height, Toast.LENGTH_SHORT).show();
-
 
     }
 
@@ -133,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 c3.y = 10;
                 c3.z = 20;
                 intent.putExtra("cParcelable", c3);
-                startActivity(intent);
+                startActivityForResult(intent,12345);
             }
         });
         viewGroup1 = (CustomViewGroup) findViewById(R.id.ViewGroup1);
@@ -141,6 +149,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         viewGroup1.setButtonText("Hello");
         viewGroup2.setButtonText("World");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //Check if it a result from SecondActivity
+        if (requestCode == 12345) {
+            if (requestCode == RESULT_OK) {
+                //Get data from data's extra
+                String result = data.getStringExtra("result");
+                Toast.makeText(MainActivity.this,result,Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     @Override
@@ -166,6 +187,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //save here
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        //Restore here
     }
 }
 
