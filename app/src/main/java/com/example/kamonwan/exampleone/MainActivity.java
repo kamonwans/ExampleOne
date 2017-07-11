@@ -142,6 +142,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 c3.z = 20;
                 intent.putExtra("cParcelable", c3);
                 startActivityForResult(intent,12345);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
+
             }
         });
         viewGroup1 = (CustomViewGroup) findViewById(R.id.ViewGroup1);
